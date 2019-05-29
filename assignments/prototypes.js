@@ -229,44 +229,47 @@ function toTheDeath(player1, player2) {
   let p1 = player1;
   let p2 = player2
 
+
+  
+
+
   console.log(`${player2.name}: You will never defeat me ${player1.name}!`);
   console.log(`${player1.name}: Oh yeah? I won't even break a sweat.`)
   console.log(`${player1.name} Health: ${p1Health}`)
   console.log(`${player2.name} Health: ${p2Health}`)
 
-    const fight = function() {
+  const fight = function() {
 
-    while (p1Health > 0 && p2Health > 0) {
-      p1Attack = p1.attackStrength();
-      console.log(p1.attack());
-      
-      if (p1Attack % 2 === 0) {
-        console.log(p2.getsHit());
-        console.log(`${p2.name} Health: -${p1Attack}`)
-        p2Health -= p1Attack;
-      }
-      else {
-        console.log(p2.dodge());
-      }
+  while (p1Health > 0 && p2Health > 0) {
+    p1Attack = p1.attackStrength();
+    console.log(p1.attack());      
 
-      p2Attack = p2.attackStrength();
-      console.log(p2.attack());
-
-      if (p2Attack % 2 !== 0) {
-        console.log(p1.getsHit());
-        console.log(`${p1.name} Health: -${p2Attack}`)
-        p1Health -= p2;
-      }
-      else {
-        console.log(p1.dodge());
-      }
+    if (p1Attack % 2 === 0) {
+      console.log(p2.getsHit());
+      console.log(`${p2.name} Health: -${p1Attack}`)
+      p2Health -= p1Attack;
+    }
+    else {
+      console.log(p2.dodge());
     }
 
-    if (p2Health > p1Health) {
-        victor = p2;
-        defeated = p1;
-      }
+    p2Attack = p2.attackStrength();
+    console.log(p2.attack());
+
+        if (p2Attack % 2 !== 0) {
+      console.log(p1.getsHit());
+      console.log(`${p1.name} Health: -${p2Attack}`)
+      p1Health -= p2;
     }
+    else {
+      console.log(p1.dodge());
+    }
+
+  if (p2Health > p1Health) {
+      victor = p2;
+      defeated = p1;
+    }
+  }
 
   fight();
 
