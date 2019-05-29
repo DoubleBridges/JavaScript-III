@@ -125,16 +125,16 @@ const archer = new Humanoid({
   language: 'Elvish',
 });
 
-// console.log(mage.createdAt); // Today's date
-// console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-// console.log(swordsman.healthPoints); // 15
-// console.log(mage.name); // Bruce
-// console.log(swordsman.team); // The Round Table
-// console.log(mage.weapons); // Staff of Shamalama
-// console.log(archer.language); // Elvish
-// console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-// console.log(mage.takeDamage()); // Bruce took damage.
-// console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+console.log(mage.createdAt); // Today's date
+console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+console.log(swordsman.healthPoints); // 15
+console.log(mage.name); // Bruce
+console.log(swordsman.team); // The Round Table
+console.log(mage.weapons); // Staff of Shamalama
+console.log(archer.language); // Elvish
+console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+console.log(mage.takeDamage()); // Bruce took damage.
+console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 
 // Stretch task: 
@@ -210,12 +210,12 @@ const villageIdiot = new Hero({
   },
   healthPoints: 10,
   name: 'Bruce Campbell',
-  team: "/'Murica",
+  team: "'Murica",
   weapons: [
     'Boomstick',
     'Chainsaw',
   ],
-  language: "/'Murican",
+  language: "'Murican",
 });
 
 function toTheDeath(player1, player2) {
@@ -233,8 +233,8 @@ function toTheDeath(player1, player2) {
   console.log(`${player1.name}: Oh yeah? I won't even break a sweat.`)
   console.log(`${player1.name} Health: ${p1Health}`)
   console.log(`${player2.name} Health: ${p2Health}`)
-  const fight = function(p1, p2) {
-    if(p1Health !== 0 && p2Health !== 0)
+
+    const fight = function() {
 
     while (p1Health > 0 && p2Health > 0) {
       p1Attack = p1.attackStrength();
@@ -262,17 +262,15 @@ function toTheDeath(player1, player2) {
       }
     }
 
-    else {
-      if (p1Health === 0) {
+    if (p2Health > p1Health) {
         victor = p2;
         defeated = p1;
       }
     }
-  }
-  fight(p1, p2);
+
+  fight();
+
   console.log(outcome);
-}
+};
 
 toTheDeath(villageIdiot, nemisis);
-
-// console.log(Math.floor((Math.random() * 10) + 1));
