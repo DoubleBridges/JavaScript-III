@@ -217,32 +217,6 @@ function GameObject(attributes) {
     ],
     language: "'Murican",
   });
-
-// function testFunc() {
-//     let val1 = 100;
-//     let val2 = 100;
-//     let winner = `val1`;
-//     let randNum = function() {
-//         return Math.floor((Math.random() * 10) + 1)
-//     };
- 
-//     while (val1 > 0 && val2 > 0) {
-//         val1 -= randNum();
-//         console.log(val1);
-//         val2 -= randNum();
-//         console.log(val2);
-//     }
- 
-//     if (val2 > val1) {
-//         winner = `val2`;
-//         loser = `val1`;
-//     }
- 
-//     console.log(`The winner is ${winner}.`);
-//  }
- 
-//  testFunc();
- 
  
  function toTheDeath(player1, player2) {
   let p1Health = 100;
@@ -268,7 +242,7 @@ function GameObject(attributes) {
  
       if (p1Attack % 2 === 0) {
         console.log(p2.getsHit());
-        console.log(`${p2.name} Health: -${p1Attack}`)
+        console.log(`${p2.name} Health Loss: -${p1Attack}`)
         p2Health -= p1Attack;
       }
       else {
@@ -278,14 +252,16 @@ function GameObject(attributes) {
       p2Attack = p2.attackStrength();
       console.log(p2.attack());
  
-      if (p2Attack % 2 !== 0) {
+      if (p2Attack % 2 === 0) {
         console.log(p1.getsHit());
-        console.log(`${p1.name} Health: -${p2Attack}`)
-        p1Health -= p2;
+        console.log(`${p1.name} Health Loss: -${p2Attack}`)
+        p1Health -= p2Attack;
       }
       else {
         console.log(p1.dodge());
       }
+      console.log(`${player1.name} Remaining Health: ${p1Health}`)
+      console.log(`${player2.name} Remaining Health: ${p2Health}`)
     }
  
     if (p2Health > p1Health) {

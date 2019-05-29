@@ -219,61 +219,61 @@ const villageIdiot = new Hero({
 });
 
 function toTheDeath(player1, player2) {
-  let p1Health = 100;
-  let p2Health = 100;
-  let p1Attack;
-  let p2Attack;
-  let victor = player1;
-  let defeated = player2;
-  let outcome = `${victor.name} has carried the day for ${victor.team} and sent ${defeated.name} wimpering back to ${defeated.team}.`
-  let p1 = player1;
-  let p2 = player2
+let p1Health = 100;
+let p2Health = 100;
+let p1Attack;
+let p2Attack;
+let victor = player1;
+let defeated = player2;
+let outcome = `${victor.name} has carried the day for ${victor.team} and sent ${defeated.name} wimpering back to ${defeated.team}.`
+let p1 = player1;
+let p2 = player2
 
-
-  
-
-
-  console.log(`${player2.name}: You will never defeat me ${player1.name}!`);
-  console.log(`${player1.name}: Oh yeah? I won't even break a sweat.`)
-  console.log(`${player1.name} Health: ${p1Health}`)
-  console.log(`${player2.name} Health: ${p2Health}`)
+console.log(`${player2.name}: You will never defeat me ${player1.name}!`);
+console.log(`${player1.name}: Oh yeah? I won't even break a sweat.`)
+console.log(`${player1.name} Health: ${p1Health}`)
+console.log(`${player2.name} Health: ${p2Health}`)
 
   const fight = function() {
 
-  while (p1Health > 0 && p2Health > 0) {
-    p1Attack = p1.attackStrength();
-    console.log(p1.attack());      
+    while (p1Health > 0 && p2Health > 0) {
+      p1Attack = p1.attackStrength();
+      console.log(p1.attack());
 
-    if (p1Attack % 2 === 0) {
-      console.log(p2.getsHit());
-      console.log(`${p2.name} Health: -${p1Attack}`)
-      p2Health -= p1Attack;
-    }
-    else {
-      console.log(p2.dodge());
+      if (p1Attack % 2 === 0) {
+        console.log(p2.getsHit());
+        console.log(`${p2.name} Health Loss: -${p1Attack}`)
+        p2Health -= p1Attack;
+      }
+      else {
+        console.log(p2.dodge());
+      }
+
+      p2Attack = p2.attackStrength();
+      console.log(p2.attack());
+
+      if (p2Attack % 2 === 0) {
+        console.log(p1.getsHit());
+        console.log(`${p1.name} Health Loss: -${p2Attack}`)
+        p1Health -= p2Attack;
+      }
+      else {
+        console.log(p1.dodge());
+      }
+      console.log(`${player1.name} Remaining Health: ${p1Health}`)
+      console.log(`${player2.name} Remaining Health: ${p2Health}`)
     }
 
-    p2Attack = p2.attackStrength();
-    console.log(p2.attack());
-
-        if (p2Attack % 2 !== 0) {
-      console.log(p1.getsHit());
-      console.log(`${p1.name} Health: -${p2Attack}`)
-      p1Health -= p2;
-    }
-    else {
-      console.log(p1.dodge());
-    }
-
-  if (p2Health > p1Health) {
-      victor = p2;
-      defeated = p1;
-    }
   }
 
-  fight();
+fight();
 
-  console.log(outcome);
+if (p2Health > p1Health) {
+  victor.name = player2.name;
+  defeated.name = player1.name;
+}
+
+console.log(outcome);
 };
 
 toTheDeath(villageIdiot, nemisis);
