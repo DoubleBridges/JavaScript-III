@@ -125,16 +125,16 @@ const archer = new Humanoid({
   language: 'Elvish',
 });
 
-console.log(mage.createdAt); // Today's date
-console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-console.log(swordsman.healthPoints); // 15
-console.log(mage.name); // Bruce
-console.log(swordsman.team); // The Round Table
-console.log(mage.weapons); // Staff of Shamalama
-console.log(archer.language); // Elvish
-console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-console.log(mage.takeDamage()); // Bruce took damage.
-console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+// console.log(mage.createdAt); // Today's date
+// console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+// console.log(swordsman.healthPoints); // 15
+// console.log(mage.name); // Bruce
+// console.log(swordsman.team); // The Round Table
+// console.log(mage.weapons); // Staff of Shamalama
+// console.log(archer.language); // Elvish
+// console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+// console.log(mage.takeDamage()); // Bruce took damage.
+// console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 
 // Stretch task: 
@@ -157,7 +157,7 @@ Villain.prototype.attackStrength = function() {
 }
 
 Villain.prototype.dodge = function () {
-  return `Oh no! Our Hero ${hero.name} has missed!`;
+  return `Oh no! Our Hero ${villageIdiot.name} has missed!`;
 }
 
 Villain.prototype.getsHit = function () {
@@ -226,45 +226,50 @@ function toTheDeath(player1, player2) {
   let victor = player1;
   let defeated = player2;
   let outcome = `${victor.name} has carried the day for ${victor.team} and sent ${defeated.name} wimpering back to ${defeated.team}.`
+  let p1 = player1;
+  let p2 = player2
 
   console.log(`${player2.name}: You will never defeat me ${player1.name}!`);
   console.log(`${player1.name}: Oh yeah? I won't even break a sweat.`)
-
-  function fight(player1, player2) {
-    if(p1Health != 0 && p2Health != 0)
+  console.log(`${player1.name} Health: ${p1Health}`)
+  console.log(`${player2.name} Health: ${p2Health}`)
+  const fight = function(p1, p2) {
+    if(p1Health !== 0 && p2Health !== 0)
 
     while (p1Health > 0 && p2Health > 0) {
-      p1Attack = player1.attackStrength();
-      console.log(player1.attack());
+      p1Attack = p1.attackStrength();
+      console.log(p1.attack());
       
       if (p1Attack % 2 === 0) {
-        console.log(player2.getsHit());
+        console.log(p2.getsHit());
+        console.log(`${p2.name} Health: -${p1Attack}`)
         p2Health -= p1Attack;
       }
       else {
-        console.log(player2.dodge());
+        console.log(p2.dodge());
       }
 
-      p2Attack = player2.attackStrength();
-      console.log(player2.attack());
+      p2Attack = p2.attackStrength();
+      console.log(p2.attack());
 
       if (p2Attack % 2 !== 0) {
-        console.log(player1.getsHit());
-        p1Health -= p2Attack;
+        console.log(p1.getsHit());
+        console.log(`${p1.name} Health: -${p2Attack}`)
+        p1Health -= p2;
       }
       else {
-        console.log(player1.dodge());
+        console.log(p1.dodge());
       }
     }
 
     else {
       if (p1Health === 0) {
-        victor = player2;
-        defeated = player1;
+        victor = p2;
+        defeated = p1;
       }
     }
   }
-  fight();
+  fight(p1, p2);
   console.log(outcome);
 }
 
